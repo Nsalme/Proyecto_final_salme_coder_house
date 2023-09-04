@@ -1,0 +1,21 @@
+{% extends 'aplicacion/base.html' %}
+{% load static %}
+
+{% block titulo %}
+    Detalle del Evento: {{ evento.titulo }}
+{% endblock titulo %}
+    
+{% block contenido %}
+    <h1>Detalle del Evento</h1>
+
+    <div class="evento-details">
+        <h2>{{ evento.titulo }}</h2>
+        <p>Descripción: {{ evento.descripcion }}</p>
+        <p>Fecha: {{ evento.fecha }}</p>
+        {% if evento.imagen %}
+        <img src="{{ evento.imagen.url }}" alt="{{ evento.titulo }}">
+        {% endif %}
+    </div>
+    
+    <a href="{% url 'evento' %}">Volver a la lista de eventos</a>
+{% endblock contenido %}

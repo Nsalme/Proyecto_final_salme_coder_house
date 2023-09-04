@@ -1,0 +1,22 @@
+{% extends 'aplicacion/base.html' %}
+{% load static %}
+
+{% block titulo %}
+    Detalle del Personal: {{ personal.nombre }}
+{% endblock titulo %}
+    
+{% block contenido %}
+    <h1>Detalle del Personal</h1>
+
+    <div class="personal-details">
+        <h2>{{ personal.nombre }}</h2>
+        <p>Cargo: {{ personal.cargo }}</p>
+        <p>Contacto: {{ personal.contacto }}</p>
+        <!-- Agrega más detalles según tu modelo Personal -->
+        {% if personal.imagen %}
+        <img src="{{ personal.imagen.url }}" alt="{{ personal.nombre }}">
+        {% endif %}
+    </div>
+    
+    <a href="{% url 'personal' %}">Volver a la lista de personal</a>
+{% endblock contenido %}

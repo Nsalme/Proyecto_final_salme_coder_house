@@ -1,0 +1,36 @@
+{% extends 'aplicacion/base.html' %}
+{% load static %}
+
+{% block titulo %}
+    Pagina de eventos
+{% endblock titulo %}
+    
+{% block contenido %}
+    <h1>Eventos</h1>
+
+    <h2>Eventos Existentes</h2>
+    <table>
+        <thead>
+            <tr>
+                <th>Título</th>
+                <th>Descripción</th>
+                <th>Fecha</th>
+                <th>Imagen</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for evento in eventos %}
+                <tr>
+                    <td><a href="{% url 'detalle_evento' evento.id %}">{{ evento.titulo }}</a></td>
+                    <td>{{ evento.descripcion }}</td>
+                    <td>{{ evento.fecha }}</td>
+                    <td>
+                        {% if evento.imagen %}
+                            <img src="{{ evento.imagen.url }}" alt="{{ evento.titulo }}" width="100">
+                        {% endif %}
+                    </td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+{% endblock contenido %}

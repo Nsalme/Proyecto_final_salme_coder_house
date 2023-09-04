@@ -1,0 +1,16 @@
+{% extends 'aplicacion/base.html' %}
+
+{% block titulo %}Registro{% endblock titulo %}
+
+{% block contenido %}
+<section class="py-5">
+    <div class="container">
+        <h2>Registro</h2>
+        <form method="post">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <button type="submit" class="btn btn-primary">Registrarse</button>
+        </form>
+    </div>
+</section>
+{% endblock contenido %}

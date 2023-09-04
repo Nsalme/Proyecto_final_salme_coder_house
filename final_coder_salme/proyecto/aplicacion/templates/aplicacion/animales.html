@@ -1,0 +1,23 @@
+{% extends 'aplicacion/base.html' %}
+{% load static %}
+
+{% block titulo %}
+{% endblock titulo %}
+
+{% block contenido %}
+    <h1>Animales</h1>
+
+    <ul>
+        {% for animal in animales %}
+            <li>
+                <a href="{% url 'detalle_animal' animal.id %}">{{ animal.nombre }}</a>
+            </li>
+        {% endfor %}
+    </ul>
+{% endblock contenido %}
+
+
+
+
+
+

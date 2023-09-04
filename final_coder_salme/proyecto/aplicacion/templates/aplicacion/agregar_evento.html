@@ -1,0 +1,18 @@
+{% extends 'aplicacion/base.html' %}
+
+{% block titulo %}
+Agregar Evento
+{% endblock titulo %}
+
+{% block contenido %}
+<section class="py-5">
+    <div class="container">
+        <h2>Agregar Evento</h2>
+        <form method="post" enctype="multipart/form-data">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <button type="submit" class="btn btn-primary">Guardar</button>
+        </form>
+    </div>
+</section>
+{% endblock contenido %}

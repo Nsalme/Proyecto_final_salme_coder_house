@@ -1,0 +1,106 @@
+{% extends 'aplicacion/base.html' %}
+{% load static %}
+
+{% block titulo %}
+    Formularios
+{% endblock titulo %}
+    
+{% block contenido %}
+    <h1>Formularios</h1>
+
+    <p>Selecciona una opción:</p>
+
+    <!-- Enlace para agregar personal -->
+    <a href="{% url 'agregar_personal' %}" class="btn btn-primary">Agregar Personal</a>
+
+    <!-- Enlace para agregar animales -->
+    <a href="{% url 'agregar_animal' %}" class="btn btn-primary">Agregar Animal</a>
+
+    <!-- Enlace para agregar evento -->
+    <a href="{% url 'agregar_evento' %}" class="btn btn-primary">Agregar Evento</a>
+
+    <!-- Tabla para listar personal -->
+    <h2>Lista de Personal</h2>
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Nombre</th>
+                <th>Apellido</th>
+                <th>Acciones</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for persona in personal %}
+                <tr>
+                    <td>{{ persona.nombre }}</td>
+                    <td>{{ persona.apellido }}</td>
+                    <td>
+                        <a href="{% url 'detalle_personal' persona.id %}" class="btn btn-info">Ver Detalles</a>
+                        <a href="{% url 'editar_personal' persona.id %}" class="btn btn-warning">Editar</a>
+                        <a href="{% url 'eliminar_personal' persona.id %}" class="btn btn-danger">Eliminar</a>
+                    </td>
+                </tr>
+            {% empty %}
+                <tr>
+                    <td colspan="3">No hay personal registrado.</td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+    <!-- Tabla para listar animales -->
+    <h2>Lista de Animales</h2>
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Nombre</th>
+                <th>Especie</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for animal in animales %}
+                <tr>
+                    <td>{{ animal.nombre }}</td>
+                    <td>{{ animal.especie }}</td>
+                    <td>
+                        <a href="{% url 'detalle_animal' animal.id %}" class="btn btn-info">Ver Detalles</a>
+                        <a href="{% url 'editar_animal' animal.id %}" class="btn btn-warning">Editar</a>
+                        <a href="{% url 'eliminar_animal' animal.id %}" class="btn btn-danger">Eliminar</a>
+                    </td>
+                </tr>
+            {% empty %}
+                <tr>
+                    <td colspan="3">No hay animales registrados.</td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+    <!-- Tabla para listar eventos -->
+    <h2>Lista de Eventos</h2>
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Título</th>
+                <th>Fecha</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for evento in eventos %}
+                <tr>
+                    <td>{{ evento.titulo }}</td>
+                    <td>{{ evento.fecha }}</td>
+                    <td>
+                        <a href="{% url 'detalle_evento' evento.id %}" class="btn btn-info">Ver Detalles</a>
+                        <a href="{% url 'editar_evento' evento.id %}" class="btn btn-warning">Editar</a>
+                        <a href="{% url 'eliminar_evento' evento.id %}" class="btn btn-danger">Eliminar</a>
+                    </td>
+                </tr>
+            {% empty %}
+                <tr>
+                    <td colspan="3">No hay eventos registrados.</td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+{% endblock contenido %}

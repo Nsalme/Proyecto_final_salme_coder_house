@@ -1,0 +1,18 @@
+{% extends 'aplicacion/base.html' %}
+{% load static %}
+
+{% block titulo %}
+    {% if evento.id %}Editar Evento{% else %}Agregar Evento{% endif %}
+{% endblock titulo %}
+
+{% block contenido %}
+    <h1>{% if evento.id %}Editar Evento{% else %}Agregar Evento{% endif %}</h1>
+
+    <form method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">{% if evento.id %}Guardar Cambios{% else %}Crear Evento{% endif %}</button>
+    </form>
+
+    <a href="{% url 'evento' %}">Volver a la lista de eventos</a>
+{% endblock contenido %}

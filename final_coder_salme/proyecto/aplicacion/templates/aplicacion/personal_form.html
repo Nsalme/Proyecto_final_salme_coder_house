@@ -1,0 +1,18 @@
+{% extends 'aplicacion/base.html' %}
+{% load static %}
+
+{% block titulo %}
+    {% if personal.id %}Editar Personal{% else %}Agregar Personal{% endif %}
+{% endblock titulo %}
+
+{% block contenido %}
+    <h1>{% if personal.id %}Editar Personal{% else %}Agregar Personal{% endif %}</h1>
+
+    <form method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">{% if personal.id %}Guardar Cambios{% else %}Crear Personal{% endif %}</button>
+    </form>
+
+    <a href="{% url 'personal' %}">Volver a la lista de personal</a>
+{% endblock contenido %}

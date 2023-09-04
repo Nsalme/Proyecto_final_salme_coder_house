@@ -1,0 +1,34 @@
+{% extends 'aplicacion/base.html' %}
+{% load static %}
+
+{% block titulo %}
+    Detalle del Animal: {{ animal.nombre }}
+{% endblock titulo %}
+    
+{% block contenido %}
+    <h1>Detalle del Animal</h1>
+    
+    <div class="animal-details">
+        {% if animal.imagen %}
+            <img src="{{ animal.imagen.url }}" alt="{{ animal.nombre }}">
+        {% else %}
+            <!-- Mostrar una imagen de marcador de posición o un mensaje de que no hay imagen -->
+            <img src="{% static 'placeholder.jpg' %}" alt="Imagen no disponible">
+        {% endif %}
+        <h2>{{ animal.nombre }}</h2>
+        <p>Especie: {{ animal.especie }}</p>
+        <p>Fecha de Nacimiento: {{ animal.fecha_nacimiento }}</p>
+        <p>Género: {{ animal.get_genero_display }}</p>
+        <p>Descripción: {{ animal.descripcion }}</p>
+    </div>
+    
+    
+    <a href="{% url 'animales' %}">Volver a la lista de animales</a>
+{% endblock contenido %}
+
+
+
+
+
+
+

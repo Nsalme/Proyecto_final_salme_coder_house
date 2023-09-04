@@ -1,0 +1,30 @@
+{% extends 'aplicacion/base.html' %}
+{% load static %}
+
+{% block titulo %}
+    Página de usuarios
+{% endblock titulo %}
+    
+{% block contenido %}
+    <h1>Usuarios</h1>
+    <table class="table table-striped table-bordered custom-table">
+        <thead class="thead-dark">
+            <tr>
+                <th>Nombre</th>
+                <th>Cargo</th>
+                <th>Correo</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for p in personal %}
+            <tr>
+                <td>{{ p.nombre }}</td>
+                <td>{{ p.cargo }}</td>
+                <td>{{ p.contacto }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    
+ 
+{% endblock contenido %}
